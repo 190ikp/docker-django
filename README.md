@@ -1,4 +1,4 @@
-# A simple Django server for PWA development
+# A simple Django server
 
 example:
 ```shell
