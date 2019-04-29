@@ -1,7 +1,8 @@
-FROM python:3.6-alpine
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /usr/local/src
-WORKDIR /usr/local/src
-COPY requirements.txt /usr/local/src/
-RUN pip install -r requirements.txt
-ADD . /usr/local/src/
+FROM python:3.6.8-slim-stretch
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
