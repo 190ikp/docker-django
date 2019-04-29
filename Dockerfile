@@ -6,9 +6,8 @@ ENV DJANGO_VER=2.2
 
 RUN mkdir /usr/local/src
 WORKDIR /usr/local/src
-
 COPY requirements.sh /usr/local/src/
-RUN pip install Django==${DJANGO_VER} && \
-    chmod +x requirements.sh && ./requirements.sh
 
-ADD . /usr/local/src/
+RUN pip install Django==${DJANGO_VER}
+
+CMD ./requirements.sh && python manage.py runserver 0.0.0.0:8000
