@@ -1,13 +1,11 @@
 FROM python:3.6.8-slim-stretch
 
-ENV REQUIREMENTS="requirements.txt"
+ENV REQUIREMENTS="Django==2.2"
 
 WORKDIR /usr/src/app
-
-COPY requirements.sh ./requirements.sh
 COPY . .
-RUN pip install --no-cache-dir Django==2.2 \
-    && chmod +x /usr/src/app/requirements.sh
-EXPOSE 8000
 
-CMD './requirements.sh'
+RUN pip install --no-cache-dir ${REQUIREMENTS} \
+    && apt autoremove
+
+EXPOSE 8000
